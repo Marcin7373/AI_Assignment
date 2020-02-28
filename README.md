@@ -8,7 +8,7 @@ different camera perspectives taht will be used from following a target from a s
 to being attached to the top of, or the wing of either of the jets to following from different offsets 
 by having the camera fly in formation with the target also avoiding the terrain.
 
-[![VideoRef](http://img.youtube.com/vi/v=N-nRnddi7Q8)/0.jpg)](https://www.youtube.com/watch?v=N-nRnddi7Q8) 
+[![VideoRef](http://img.youtube.com/vi/v=N-nRnddi7Q8/0.jpg)](https://www.youtube.com/watch?v=N-nRnddi7Q8) 
 
 ## StoryBoard
 
