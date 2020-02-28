@@ -7,6 +7,8 @@ while the attacking jets will pursue and fire rockets and other projectiles. An 
 different camera perspectives that will be used from following a target from a stationary point
 to being attached to the top or the wing of either of the jets, to following from different offsets 
 by having the camera fly in formation with the target while also avoiding the terrain.
+These camera angles will require basic seek and pursue algorithms but also ones like flying in formation and independently 
+controlling what its looking at. 
 
 [![VideoRef](https://img.youtube.com/vi/N-nRnddi7Q8/0.jpg)](https://www.youtube.com/watch?v=N-nRnddi7Q8)
 
@@ -46,5 +48,5 @@ following the SwordFish in position but looking at the rockets as they fly out o
 
 Then switching to having the camera fly in formation with the rocket while looking at the SwordFish.
 
-The fight will end with the SwordFish getting to and area with water and a bridge and firing at the water blinding 
-the second attacker jet for a moment and flying into an obstacle and exploding.
+A second scene in an area with water, a bridge and a ship as an onstacle for the attacking jet to crash into.
+The fight will end with the SwordFish firing at the water before the bridge blinding the second attacker jet for a moment and flying into an obstacle and exploding.
