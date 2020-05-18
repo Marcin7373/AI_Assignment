@@ -26,15 +26,29 @@ class FollowState : State
 
 class PursueState : State
 {
+    int rockets = 1;
+    float timer = 0;
+
     public override void Enter()
     {
-        
         owner.GetComponent<Pursue>().enabled = true;
     }
 
     public override void Think()
     {
-        //firing
+        if (rockets > 0 && owner.transform.position.y > 500 && Vector3.Angle(owner.GetComponent<Pursue>().target.transform.position - owner.transform.position, owner.transform.forward) < 20)
+        {
+            Manager.Instance.CreateRocket(owner.transform.GetChild(0).position, owner.transform.GetChild(0).rotation);
+            rockets--;
+        }
+
+        
+        if (Vector3.Angle(owner.GetComponent<Pursue>().target.transform.position - owner.transform.position, owner.transform.forward) < 20 && timer > 0.06f)
+        {
+            Manager.Instance.CreateBullet(owner.transform.GetChild(0).position, owner.transform.GetChild(0).rotation);
+            timer = 0;
+        }
+        timer += Time.deltaTime;
 
         if (owner.GetComponent<AttackJet>().dead)
         {
@@ -45,7 +59,7 @@ class PursueState : State
     public override void Exit()
     {
         owner.GetComponent<Pursue>().enabled = false;
-        owner.GetComponent<Boid>().enabled = false;
+        owner.GetComponent<ObstacleAvoidance>().enabled = false;
     }
 }
 
@@ -61,7 +75,7 @@ class DyingState : State
         if (owner.GetComponent<AttackJet>().crash)
         {
             owner.gameObject.SetActive(false);
-        }
+        }       
     }
 }
 
@@ -69,7 +83,7 @@ public class AttackJet : MonoBehaviour
 {
     public bool lead = false, dead = false, crash = false;
 
-    private void Start()
+    void Start()
     {
         if (lead)
         {

@@ -8,7 +8,6 @@ public class SwordFish : MonoBehaviour
 
     void Update()
     {
-        
     }
 
     private void OnCollisionEnter(Collision collision)
