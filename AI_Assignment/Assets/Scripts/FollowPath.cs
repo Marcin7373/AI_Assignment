@@ -36,7 +36,6 @@ public class FollowPath : SteeringBehaviour {
                 Manager.Instance.Flags[5] = true;
                 StartCoroutine(Manager.Instance.CameraCooldown(5, 2f));
             }
-            
         }
 
         if (!path.looped && path.IsLast())

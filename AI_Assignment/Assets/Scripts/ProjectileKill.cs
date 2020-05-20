@@ -23,8 +23,10 @@ public class ProjectileKill : MonoBehaviour
     }
 
     IEnumerator Kill(float delay)
-    {
+    {     
         yield return new WaitForSeconds(delay);
+        Manager.Instance.explosion[0].gameObject.transform.position = gameObject.transform.position;
+        Manager.Instance.explosion[0].Play();
         Destroy(gameObject);
     }
 }

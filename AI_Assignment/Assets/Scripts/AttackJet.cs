@@ -92,7 +92,7 @@ public class AttackJet : MonoBehaviour
         else
         {
             GetComponent<StateMachine>().ChangeState(new FollowState());
-        }   
+        }
     }
 
     void Update()
@@ -114,17 +114,35 @@ public class AttackJet : MonoBehaviour
         {
             crash = true;
             dead = true;
-            
+            Manager.Instance.explosion[0].gameObject.transform.position = gameObject.transform.position;
+            Manager.Instance.explosion[0].Play();
+            Manager.Instance.explosion[1].gameObject.transform.position = gameObject.transform.position;
+            Manager.Instance.explosion[1].Play();
+            Manager.Instance.explosion[2].gameObject.transform.position = gameObject.transform.position;
+            Manager.Instance.explosion[2].Play();
         }
         else if (collision.gameObject.tag == "SwordAttack")
         {
             dead = true;
-
+            Manager.Instance.explosion[0].gameObject.transform.position = gameObject.transform.position;
+            Manager.Instance.explosion[0].Play();
+            Manager.Instance.explosion[1].gameObject.transform.position = gameObject.transform.position;
+            Manager.Instance.explosion[1].Play();
+            Manager.Instance.explosion[2].gameObject.transform.position = gameObject.transform.position;
+            Manager.Instance.explosion[2].Play();
         }
 
-        if (!dead)
+        if (collision.gameObject.tag == "FlashBang")
         {
-            
+            GetComponent<ObstacleAvoidance>().enabled = false;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "FlashBang")
+        {
+            GetComponent<ObstacleAvoidance>().enabled = true;
         }
     }
 }

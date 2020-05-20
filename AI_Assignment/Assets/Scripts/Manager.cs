@@ -9,6 +9,8 @@ public class Manager : MonoBehaviour
     public int curCamTarget = 4, leader = 0;
     public float timer = 0f, delay = 0f;
     public GameObject bullet, rocket, swordFish, tempB, tempR;
+    private Transform lastSeenTarget;
+    public ParticleSystem[] explosion;
 
     public static Manager Instance { get; private set; }
                                          // firing bullets, rocket, dying, waypoint reached, cantSwitch, flash
@@ -29,6 +31,8 @@ public class Manager : MonoBehaviour
     void Start()
     {
         attackJets[leader].lead = true;
+        swordFish.GetComponent<SwordFish>().attacker = attackJets[leader].transform;
+        lastSeenTarget = camTargets[leader].transform;
         Flags[4] = true;
         timer = 0;
         delay = 5f;
@@ -41,7 +45,9 @@ public class Manager : MonoBehaviour
             if (attackJets[leader].dead == true)
             {
                 attackJets[leader].lead = false;
+                lastSeenTarget = camTargets[leader].transform;
                 leader++;
+                swordFish.GetComponent<SwordFish>().attacker = attackJets[leader].transform;
             }
             else
             {
@@ -55,14 +61,11 @@ public class Manager : MonoBehaviour
             Flags[4] = false;
         }
 
-        if (Flags[2] && leader < attackJets.Length) //dying
+        if (Flags[2]) //dying
         {
-            if (cameras[4].GetComponent<CameraFollow>().cameraTarget != camTargets[0+leader].transform)
-            {
-                cameras[4].transform.position = camTargets[0+leader].transform.position;
-                cameras[4].transform.rotation = camTargets[0+leader].transform.rotation;
-                cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[0+leader].transform;
-            }
+            cameras[4].transform.position = camTargets[2].transform.position;
+            cameras[4].transform.LookAt(lastSeenTarget.position);
+            cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[2].transform;
 
             if (curCamTarget != 4) {
                 cameras[curCamTarget].SetActive(false);
@@ -74,15 +77,15 @@ public class Manager : MonoBehaviour
             Flags[2] = false;
             //StartCoroutine(CameraCooldown(4, 3f));
             timer = 0;
-            delay = 2f;
+            delay = 3f;
             
         }
-        else if (Flags[1] && curCamTarget != 4) //firing rocket
+        else if (Flags[1] && tempR != null) //firing rocket
         {
             if (cameras[4].GetComponent<CameraFollow>().cameraTarget != cameras[2].transform)
             {
-                cameras[4].transform.position = cameras[2].transform.position;
-                cameras[4].transform.rotation = cameras[2].transform.rotation;
+                //cameras[4].transform.position = cameras[2].transform.position;
+                //cameras[4].transform.rotation = cameras[2].transform.rotation;
                 cameras[4].GetComponent<CameraFollow>().cameraTarget = tempR.transform;
             }
 
@@ -96,7 +99,7 @@ public class Manager : MonoBehaviour
             Flags[4] = true;
             //StartCoroutine(CameraCooldown(4, 5f));
             timer = 0;
-            delay = 5f;
+            delay = 4f;
         }
         else if (Flags[5] && curCamTarget != 1 && !Flags[4]) //flashbang
         {
@@ -134,11 +137,11 @@ public class Manager : MonoBehaviour
         }
         else if(leader < attackJets.Length && !Flags[4]) //default
         {
-            if (cameras[4].GetComponent<CameraFollow>().cameraTarget != camTargets[0 + leader].transform)
+            if (cameras[4].GetComponent<CameraFollow>().cameraTarget != camTargets[leader].transform)
             {
-                cameras[4].transform.position = camTargets[0 + leader].transform.position;
-                cameras[4].transform.rotation = camTargets[0 + leader].transform.rotation;
-                cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[0 + leader].transform;
+                cameras[4].transform.position = camTargets[leader].transform.position;
+                cameras[4].transform.rotation = camTargets[leader].transform.rotation;
+                cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[leader].transform;
             }
 
             if (curCamTarget != 4)
@@ -154,9 +157,9 @@ public class Manager : MonoBehaviour
             delay = 1f;
         }
 
-        if (Flags[2]||Flags[3]) {
+        //if () {
             //Debug.Log(Flags[2] + " " + Flags[3] + " " + Flags[4]);
-        }
+        //}
 
         if (Input.GetKeyDown("1"))
         {
@@ -182,9 +185,9 @@ public class Manager : MonoBehaviour
     {
         tempR = Instantiate(rocket, pos, rot);
         tempR.transform.LookAt(swordFish.transform);
-        rocket.GetComponent<Seek>().targetGameObject = swordFish;
+        tempR.GetComponent<Seek>().targetGameObject = swordFish;
         Flags[1] = true;
-        StartCoroutine(CameraCooldown(1, 4f));
+        StartCoroutine(CameraCooldown(1, 3f));
     }
 
     public void CreateBullet(Vector3 pos, Quaternion rot)
