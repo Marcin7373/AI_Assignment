@@ -35,17 +35,16 @@ public class Manager : MonoBehaviour
         lastSeenTarget = camTargets[leader].transform;
         Flags[4] = true;
         timer = 0;
-        delay = 5f;
-        //StartCoroutine(CameraCooldown(4, 5f));
+        delay = 5f; //following 2nd attacker jet at intro
     }
 
     void Update()
     {
-        if (leader < attackJets.Length) {
+        if (leader < attackJets.Length) { // leader switching if dead
             if (attackJets[leader].dead == true)
             {
                 attackJets[leader].lead = false;
-                lastSeenTarget = camTargets[leader].transform;
+                lastSeenTarget = camTargets[leader].transform; // for watching explosion after dead
                 leader++;
                 swordFish.GetComponent<SwordFish>().attacker = attackJets[leader].transform;
             }
@@ -55,7 +54,7 @@ public class Manager : MonoBehaviour
             }
         }
 
-        timer += Time.deltaTime;
+        timer += Time.deltaTime; //delay in camera switching
         if (timer >= delay)
         {
             Flags[4] = false;
@@ -65,7 +64,7 @@ public class Manager : MonoBehaviour
         {
             cameras[4].transform.position = camTargets[2].transform.position;
             cameras[4].transform.LookAt(lastSeenTarget.position);
-            cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[2].transform;
+            cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[2].transform; //switch to follow static camera
 
             if (curCamTarget != 4) {
                 cameras[curCamTarget].SetActive(false);
@@ -75,17 +74,13 @@ public class Manager : MonoBehaviour
             Debug.Log("dying " + Flags[2]);
             Flags[4] = true;
             Flags[2] = false;
-            //StartCoroutine(CameraCooldown(4, 3f));
             timer = 0;
-            delay = 3f;
-            
+            delay = 2f;    
         }
-        else if (Flags[1] && tempR != null) //firing rocket
+        else if (Flags[1] && tempR != null) //firing rocket - mobile camera follows rocket
         {
             if (cameras[4].GetComponent<CameraFollow>().cameraTarget != cameras[2].transform)
             {
-                //cameras[4].transform.position = cameras[2].transform.position;
-                //cameras[4].transform.rotation = cameras[2].transform.rotation;
                 cameras[4].GetComponent<CameraFollow>().cameraTarget = tempR.transform;
             }
 
@@ -97,18 +92,16 @@ public class Manager : MonoBehaviour
             }
             Debug.Log("rocket " + Flags[4]);
             Flags[4] = true;
-            //StartCoroutine(CameraCooldown(4, 5f));
             timer = 0;
-            delay = 4f;
+            delay = 3f;
         }
         else if (Flags[5] && curCamTarget != 1 && !Flags[4]) //flashbang
         {
             cameras[curCamTarget].SetActive(false);
             curCamTarget = 1;
-            cameras[curCamTarget].SetActive(true);
+            cameras[curCamTarget].SetActive(true);//camera at back of swordfish
             Debug.Log("flash " + Flags[4]);
             Flags[4] = true;
-            //StartCoroutine(CameraCooldown(4, 4f));
             timer = 0;
             delay = 4f;
         }
@@ -116,31 +109,29 @@ public class Manager : MonoBehaviour
         {
             cameras[curCamTarget].SetActive(false);
             curCamTarget = 2+leader;
-            cameras[curCamTarget].SetActive(true);
+            cameras[curCamTarget].SetActive(true); //camera below jet
             Debug.Log("bullets " + Flags[2]);
             Flags[4] = true;
-            //StartCoroutine(CameraCooldown(4, 4f));
             timer = 0;
             delay = 4f;
         }
-        else if (Flags[3] && curCamTarget != 0 && !Flags[4]) //turning
+        else if (Flags[3] && curCamTarget != 0 && !Flags[4]) //Swordfish turning at waypoint
         {
             cameras[curCamTarget].SetActive(false);
             curCamTarget = 0;
-            cameras[curCamTarget].SetActive(true);
+            cameras[curCamTarget].SetActive(true); //camera inside cockpit
             Debug.Log("turning " + Flags[2]);
             Flags[4] = true;
-            //StartCoroutine(CameraCooldown(4, 3f));
             Flags[3] = false;
             timer = 0;
             delay = 3f;
         }
-        else if(leader < attackJets.Length && !Flags[4]) //default
+        else if(leader < attackJets.Length && !Flags[4]) //default - follow leader using mobile camera
         {
             if (cameras[4].GetComponent<CameraFollow>().cameraTarget != camTargets[leader].transform)
             {
-                cameras[4].transform.position = camTargets[leader].transform.position;
-                cameras[4].transform.rotation = camTargets[leader].transform.rotation;
+                //cameras[4].transform.position = camTargets[leader].transform.position;
+                //cameras[4].transform.rotation = camTargets[leader].transform.rotation;
                 cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[leader].transform;
             }
 
@@ -152,32 +143,8 @@ public class Manager : MonoBehaviour
             }
             Debug.Log("default " + Flags[4]);
             Flags[4] = true;
-            //StartCoroutine(CameraCooldown(4, 2f));
             timer = 0;
             delay = 1f;
-        }
-
-        //if () {
-            //Debug.Log(Flags[2] + " " + Flags[3] + " " + Flags[4]);
-        //}
-
-        if (Input.GetKeyDown("1"))
-        {
-            cameras[curCamTarget].SetActive(false);
-            curCamTarget = 1;
-            cameras[curCamTarget].SetActive(true);
-        }
-        else if (Input.GetKeyDown("2"))
-        {
-            cameras[curCamTarget].SetActive(false);
-            curCamTarget = 2;
-            cameras[curCamTarget].SetActive(true);
-        }
-        else if (Input.GetKeyDown("3"))
-        {
-            cameras[curCamTarget].SetActive(false);
-            curCamTarget = 3;
-            cameras[curCamTarget].SetActive(true);
         }
     }
 
@@ -197,7 +164,7 @@ public class Manager : MonoBehaviour
         Flags[0] = true;
         StartCoroutine(CameraCooldown(0, 5f));
     }
-
+    // for resetting flags for the camera
     public IEnumerator CameraCooldown(int i, float cooldown)
     {
         if (Flags[i] == true) {

@@ -23,8 +23,12 @@ public class ProjectileKill : MonoBehaviour
     }
 
     IEnumerator Kill(float delay)
-    {     
-        yield return new WaitForSeconds(delay);
+    {
+        if (Manager.Instance.Flags[1] == true)
+        {
+            Manager.Instance.Flags[4] = false;
+        }
+        yield return new WaitForSeconds(delay);        //particle reposition for explosion
         Manager.Instance.explosion[0].gameObject.transform.position = gameObject.transform.position;
         Manager.Instance.explosion[0].Play();
         Destroy(gameObject);

@@ -35,7 +35,7 @@ class PursueState : State
     }
 
     public override void Think()
-    {
+    {   //only fires when within 20 degree angle and over distance 300
         if (rockets > 0 && Vector3.Angle(owner.GetComponent<Pursue>().target.transform.position - owner.transform.position, 
             owner.transform.forward) < 20 && Vector3.Distance(owner.transform.position, Manager.Instance.swordFish.transform.position) > 300)
         {
@@ -121,7 +121,7 @@ public class AttackJet : MonoBehaviour
             Manager.Instance.explosion[2].gameObject.transform.position = gameObject.transform.position;
             Manager.Instance.explosion[2].Play();
         }
-        else if (collision.gameObject.tag == "SwordAttack")
+        else if (collision.gameObject.tag == "SwordAttack") //swordfish attack = hits anything but ground
         {
             Manager.Instance.Flags[2] = true;
             dead = true;
