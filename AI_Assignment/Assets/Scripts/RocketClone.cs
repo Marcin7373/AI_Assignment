@@ -14,14 +14,17 @@ public class RocketClone : MonoBehaviour
 
     IEnumerator Clone()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.1f);
         GameObject temp = rocket;
         temp = Instantiate(rocket, transform.position, transform.rotation);
         temp.GetComponent<Seek>().targetGameObject = target;
+        yield return new WaitForSeconds(0.1f);
         temp = Instantiate(rocket, transform.position, transform.rotation);
         temp.GetComponent<Seek>().targetGameObject = target;
+        yield return new WaitForSeconds(0.2f);
         temp = Instantiate(rocket, transform.position, transform.rotation);
         temp.GetComponent<Seek>().targetGameObject = target;
+        yield return new WaitForSeconds(0.1f);
         temp = Instantiate(rocket, transform.position, transform.rotation);
         temp.GetComponent<Seek>().targetGameObject = target;
     }

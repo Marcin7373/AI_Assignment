@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwordFish : MonoBehaviour
 {
-    public int lives = 3;
+
 
     void Update()
     {
@@ -12,9 +12,6 @@ public class SwordFish : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "JetAttack")
-        {
-            lives--;
-        }
+
     }
 }

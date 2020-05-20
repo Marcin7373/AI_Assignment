@@ -28,7 +28,15 @@ public class FollowPath : SteeringBehaviour {
         nextWaypoint = path.NextWaypoint();
         if (Vector3.Distance(transform.position, nextWaypoint) < minDist)
         {
+            Manager.Instance.Flags[3] = true;
+            StartCoroutine(Manager.Instance.CameraCooldown(3, 1f));
             path.AdvanceToNext();
+            if (path.next == 6)
+            {
+                Manager.Instance.Flags[5] = true;
+                StartCoroutine(Manager.Instance.CameraCooldown(5, 2f));
+            }
+            
         }
 
         if (!path.looped && path.IsLast())
