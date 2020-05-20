@@ -29,7 +29,6 @@ public class Manager : MonoBehaviour
     void Start()
     {
         attackJets[leader].lead = true;
-        //StartCoroutine(CheckJetStatus());
         Flags[4] = true;
         timer = 0;
         delay = 5f;
@@ -194,19 +193,6 @@ public class Manager : MonoBehaviour
         tempB.transform.LookAt(swordFish.transform);
         Flags[0] = true;
         StartCoroutine(CameraCooldown(0, 5f));
-    }
-
-    IEnumerator CheckJetStatus()
-    {
-        while (true)
-        {
-            
-            
-            {
-                
-            }
-            //yield return new WaitForSeconds(checkInterval);
-        }
     }
 
     public IEnumerator CameraCooldown(int i, float cooldown)
