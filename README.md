@@ -6,7 +6,7 @@ simulate the fight. The swordfish will mainly follow a path trying to avoid rock
 while the attacking jets will pursue and fire rockets and other projectiles. An important aspect will be the many
 different camera perspectives that will be used from following a target from a stationary point
 to being attached to the top or the wing of either of the jets and to following different targets. 
-These camera angles will require basic seek and pursue algorithms while controlling what its looking at. 
+These camera angles will require basic seek and pursue algorithms while controlling what its looking at and will be used to tell the story. 
 
 ### Original
 [![VideoRef](https://img.youtube.com/vi/N-nRnddi7Q8/0.jpg)](https://www.youtube.com/watch?v=N-nRnddi7Q8)

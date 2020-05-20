@@ -7,9 +7,11 @@ public class SwordFish : MonoBehaviour
     public ParticleSystem flash1, flash2;
     public Transform attacker;
     public GameObject flashBang, temp;
+    public int lives = 3;
 
     void Update()
     {
+        //flashbang when under pipe and agains the wall
         if ((GetComponent<FollowPath>().path.next == 10 || GetComponent<FollowPath>().path.next == 6) && temp == null)
         {          
             temp = Instantiate(flashBang, Vector3.MoveTowards(transform.position, attacker.position, 30), transform.rotation);
@@ -22,6 +24,6 @@ public class SwordFish : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        lives--;
     }
 }

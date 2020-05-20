@@ -21381,7 +21381,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 9.1
+      scalar: 22.8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -46605,7 +46605,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 9.1
+      scalar: 24.63
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -53319,6 +53319,7 @@ MonoBehaviour:
   flashBang: {fileID: 8385755482345306315, guid: caeb7972b89d0c34f929004d7427b5fe,
     type: 3}
   temp: {fileID: 0}
+  lives: 3
 --- !u!54 &8296172669255087449
 Rigidbody:
   m_ObjectHideFlags: 0

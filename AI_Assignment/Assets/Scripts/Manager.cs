@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
-{
-    public GameObject[] cameras, camTargets;
+{   //cameras - swordfish cockpit, tail, bottom of attack jet1, bottom jet2, mobile cam 
+    public GameObject[] cameras, camTargets; //targets are - back of jet 1, back of jet 2, and static watching death scenes
     public AttackJet[] attackJets;
     public int curCamTarget = 4, leader = 0;
     public float timer = 0f, delay = 0f;
-    public GameObject bullet, rocket, swordFish, tempB, tempR;
+    public GameObject bullet, rocket, swordFish, tempB, tempR; //temp for instanciating rockets and bullets
     private Transform lastSeenTarget;
     public ParticleSystem[] explosion;
 
@@ -35,7 +35,7 @@ public class Manager : MonoBehaviour
         lastSeenTarget = camTargets[leader].transform;
         Flags[4] = true;
         timer = 0;
-        delay = 5f; //following 2nd attacker jet at intro
+        delay = 5f; //following 2nd attacker jet at intro for 5 seconds
     }
 
     void Update()
@@ -61,12 +61,12 @@ public class Manager : MonoBehaviour
         }
 
         if (Flags[2]) //dying
-        {
+        {   //mobile camera at static camera target point
             cameras[4].transform.position = camTargets[2].transform.position;
             cameras[4].transform.LookAt(lastSeenTarget.position);
             cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[2].transform; //switch to follow static camera
 
-            if (curCamTarget != 4) {
+            if (curCamTarget != 4) { //dont switch into same camera
                 cameras[curCamTarget].SetActive(false);
                 curCamTarget = 4;
                 cameras[curCamTarget].SetActive(true);
@@ -74,8 +74,8 @@ public class Manager : MonoBehaviour
             Debug.Log("dying " + Flags[2]);
             Flags[4] = true;
             Flags[2] = false;
-            timer = 0;
-            delay = 2f;    
+            timer = 0; //reset
+            delay = 2f;//delay before switching again - stays for 2 seconds
         }
         else if (Flags[1] && tempR != null) //firing rocket - mobile camera follows rocket
         {
@@ -84,12 +84,13 @@ public class Manager : MonoBehaviour
                 cameras[4].GetComponent<CameraFollow>().cameraTarget = tempR.transform;
             }
 
-            if (curCamTarget != 4)
+            if (curCamTarget != 4) //dont switch into same camera
             {
                 cameras[curCamTarget].SetActive(false);
                 curCamTarget = 4;
                 cameras[curCamTarget].SetActive(true);
             }
+
             Debug.Log("rocket " + Flags[4]);
             Flags[4] = true;
             timer = 0;
@@ -130,8 +131,8 @@ public class Manager : MonoBehaviour
         {
             if (cameras[4].GetComponent<CameraFollow>().cameraTarget != camTargets[leader].transform)
             {
-                //cameras[4].transform.position = camTargets[leader].transform.position;
-                //cameras[4].transform.rotation = camTargets[leader].transform.rotation;
+                cameras[4].transform.position = camTargets[leader].transform.position;
+                cameras[4].transform.rotation = camTargets[leader].transform.rotation;
                 cameras[4].GetComponent<CameraFollow>().cameraTarget = camTargets[leader].transform;
             }
 
