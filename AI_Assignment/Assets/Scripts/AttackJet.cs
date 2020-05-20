@@ -36,7 +36,7 @@ class PursueState : State
 
     public override void Think()
     {
-        if (rockets > 0 && owner.transform.position.y > 500 && Vector3.Angle(owner.GetComponent<Pursue>().target.transform.position - owner.transform.position, 
+        if (rockets > 0 && Vector3.Angle(owner.GetComponent<Pursue>().target.transform.position - owner.transform.position, 
             owner.transform.forward) < 20 && Vector3.Distance(owner.transform.position, Manager.Instance.swordFish.transform.position) > 300)
         {
             Manager.Instance.CreateRocket(owner.transform.GetChild(0).position, owner.transform.GetChild(0).rotation);
@@ -68,6 +68,7 @@ class DyingState : State
     public override void Enter()
     {
         owner.GetComponent<Rigidbody>().useGravity = true;
+        owner.GetComponent<Boid>().enabled = true;
     }
 
     public override void Think()
@@ -108,8 +109,7 @@ public class AttackJet : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
-        Manager.Instance.Flags[2] = true;
+    {      
         if (collision.gameObject.tag == "Ground")
         {
             crash = true;
@@ -123,6 +123,7 @@ public class AttackJet : MonoBehaviour
         }
         else if (collision.gameObject.tag == "SwordAttack")
         {
+            Manager.Instance.Flags[2] = true;
             dead = true;
             Manager.Instance.explosion[0].gameObject.transform.position = gameObject.transform.position;
             Manager.Instance.explosion[0].Play();

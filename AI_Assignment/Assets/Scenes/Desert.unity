@@ -4950,7 +4950,7 @@ GameObject:
   - component: {fileID: 423551046}
   m_Layer: 0
   m_Name: PipeSupport
-  m_TagString: Ground
+  m_TagString: SwordAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9969,7 +9969,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5006512735280039745}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!199 &498150605
 ParticleSystemRenderer:
@@ -15938,7 +15938,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 25.41, y: 4.87, z: 36.73}
+  m_Size: {x: 32, y: 4.87, z: 36.73}
   m_Center: {x: 0, y: 7.26, z: -18.8}
 --- !u!136 &764743760
 CapsuleCollider:
@@ -15962,7 +15962,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764743751}
   serializedVersion: 2
-  m_Mass: 3
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -20829,7 +20829,7 @@ Transform:
   m_Children:
   - {fileID: 1579018616}
   m_Father: {fileID: 5006512735280039745}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &911221828
 TrailRenderer:
@@ -21017,7 +21017,7 @@ Transform:
   m_LocalScale: {x: 1.3333333, y: 0.79291755, z: 1.0500355}
   m_Children: []
   m_Father: {fileID: 5006512735280039745}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 7.7, y: 180, z: 0}
 --- !u!1 &942633951
 GameObject:
@@ -26003,7 +26003,7 @@ Transform:
   m_LocalScale: {x: 1.3333333, y: 0.79291755, z: 1.0500355}
   m_Children: []
   m_Father: {fileID: 5006512735280039745}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -3.7, y: 0, z: 0}
 --- !u!1 &994434251
 GameObject:
@@ -31290,7 +31290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5006512735280039745}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!199 &1263380480
 ParticleSystemRenderer:
@@ -41301,7 +41301,7 @@ Transform:
   - {fileID: 1885758518}
   - {fileID: 525700276}
   m_Father: {fileID: 5006512735280039745}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!199 &1366600573
 ParticleSystemRenderer:
@@ -51858,7 +51858,7 @@ GameObject:
   - component: {fileID: 1787349175}
   m_Layer: 0
   m_Name: PipeSupport
-  m_TagString: Ground
+  m_TagString: SwordAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52545,54 +52545,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &2534866581687111887
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3248338879242327161}
-  - component: {fileID: 2834078682917666986}
-  - component: {fileID: 6806638068985883738}
-  - component: {fileID: 2534866581687111888}
-  m_Layer: 0
-  m_Name: default
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2534866581687111888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2534866581687111887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0fe245317636e94d86581a3f572167d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  force: {x: 0, y: 0, z: 0}
-  boid: {fileID: 0}
-  frequency: 0.3
-  radius: 10
-  theta: 0
-  amplitude: 80
-  distance: 5
-  axis: 0
---- !u!33 &2834078682917666986
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2534866581687111887}
-  m_Mesh: {fileID: -2432090755550338912, guid: ab7a10f3bdef5764793251b9443a2f25, type: 3}
 --- !u!33 &3185619239307468572
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -52620,20 +52572,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3248338879242327161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2534866581687111887}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5006512735280039745}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3332698687715615882
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -52811,7 +52749,7 @@ GameObject:
   - component: {fileID: 601291410190242325}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Ground
+  m_TagString: SwordAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52851,7 +52789,6 @@ Transform:
   m_LocalPosition: {x: 571.9, y: 1010.7, z: -426.36}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.7}
   m_Children:
-  - {fileID: 3248338879242327161}
   - {fileID: 963194228}
   - {fileID: 928420924}
   - {fileID: 911221827}
@@ -52982,44 +52919,6 @@ Transform:
   m_Father: {fileID: 5006512735037023213}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &6806638068985883738
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2534866581687111887}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 265b4fec15097c9469a16ccdb7039f00, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &7098123040394182254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53148,7 +53047,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 25.41, y: 4.87, z: 36.73}
+  m_Size: {x: 32.02, y: 4.87, z: 36.73}
   m_Center: {x: 0, y: 7.26, z: -18.8}
 --- !u!54 &8296172667924982947
 Rigidbody:
@@ -53158,7 +53057,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172667924982944}
   serializedVersion: 2
-  m_Mass: 3
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0

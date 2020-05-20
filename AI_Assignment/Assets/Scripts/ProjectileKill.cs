@@ -16,7 +16,7 @@ public class ProjectileKill : MonoBehaviour
         {
             StartCoroutine(Kill(delay));
         }
-        else if(collision.gameObject.tag == "Player")
+        else if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "SwordAttack")
         {
             StartCoroutine(Kill(0));
         }
