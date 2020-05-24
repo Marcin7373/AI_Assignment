@@ -41,7 +41,7 @@ This is where the leader is changed with the fight going towards the wall where 
 
 Particle effects and trails were also used for trails with the explosions for jets. Crashing being particularly difficult as the jet hit something they go into a dying state with the craft being intact. The Boid component is turned off and gravity on a rigidbody is turned on to make it fall and crash causing another explosion. Baccano soundtrack was used which has a similar style to the one from the video making it sound like its coming from the Swordfish's cockpit. The hardest part was making the Swordfish win by the attacking jets crashing were they sometimes avoided death with the Swordfish needing to follow a path because fleeing randomly wouldnt get them killed. Following a path gave the most relaible results in replicating the scene. Im most proud of the camera and how dynamic the scene looks because of it and the particle effects making the viewer feel like they're part of the action.
 
-Scripts used = Boid, FollowPath, ObstacleAvoidance, Path, OffsetPursue, Pursue, Seek, StateMachine, SteeringBehaviour.
-Scripts I made = AttackJet, Bullet, CameraFollow, Manager, ProjectileKill, RocketClone, SwordFish.
-Assets used = Terrain, AttackJet and Swordfish models, skybox, metal textures and the song.
+Scripts used = Boid, FollowPath, ObstacleAvoidance, Path, OffsetPursue, Pursue, Seek, StateMachine, SteeringBehaviour. 
+Scripts I made = AttackJet, Bullet, CameraFollow, Manager, ProjectileKill, RocketClone, SwordFish. 
+Assets used = Terrain, AttackJet and Swordfish models, skybox, metal textures and the song. 
 Assets made = Wall, Pipe, all particle systems and materials for them.
